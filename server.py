@@ -1,6 +1,7 @@
 import sys
 sys.path.append("python")
 import json
+from datetime import datetime
 import utils
 from flask import Flask, request, send_from_directory, render_template, redirect
 
@@ -43,7 +44,9 @@ def serve_css(path):
 @app.route('/')
 def root():
     # TODO: Implement logic
-    return render_template('index_elm.html', id=1, name="test")
+    return render_template('index.html', dt=datetime.today().strftime('%Y%m%d'),
+                           id=1,
+                           name="test")
     
 if __name__ == "__main__":
     app.run(port=config["server_port"], host='0.0.0.0', debug=config["debug"])
