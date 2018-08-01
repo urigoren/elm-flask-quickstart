@@ -3,10 +3,6 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Platform.Cmd exposing (..)
 import Html.Events exposing (..)
-import List.Extra exposing (getAt, zip)
-import String
-import Json.Encode as Encode
-import Json.Decode as Decode
 port externalMessage : ((String, String) -> msg) -> Sub msg
 
 
