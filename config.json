@@ -1,4 +1,5 @@
 {
+  "404_redirect": "http://www.goren4u.com",
   "server_port": 8015,
   "debug": false
 }
