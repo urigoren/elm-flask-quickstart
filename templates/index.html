@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="/css/index.css?dt={{ dt}}" rel="stylesheet">
+    <title>index elm</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="/js/index.js?dt={{ dt}}"></script>
+    <script>
+        var globals = {
+                        "id" : "{{ id }}",
+                        "name": "{{ name }}"
+                      };
+      var myContainer = document.getElementById("container");
+      var app = Elm.IndexPage.embed(myContainer, window.globals);
+    function externalMessage(json_msg)
+    {
+        //Get external message from javascript
+        var msg = {};
+        try {msg = JSON.parse(json_msg);}  catch (e) {}
+        if (!msg["type"])
+            return;
+        if (!msg["content"])
+            return;
+        app.ports.externalMessage.send([""+ msg["type"], ""+ msg["content"]]);
+    }
+    </script>
+</body>
+</html>
