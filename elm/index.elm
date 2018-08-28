@@ -1,4 +1,5 @@
 port module IndexPage exposing (..)
+import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Platform.Cmd exposing (..)
@@ -7,7 +8,7 @@ port externalMessage : ((String, String) -> msg) -> Sub msg
 
 
 main =
-  Html.programWithFlags
+  Browser.element
     { init = init
     , view = view
     , update = update
